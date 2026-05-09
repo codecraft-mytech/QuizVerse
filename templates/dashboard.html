@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -270,3 +271,277 @@
     </script>
   </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="header-left">
+          <h1>Welcome, <span id="username">{{ username }}</span> 👋</h1>
+          <p>Ready to test your knowledge today?</p>
+        </div>
+
+        <!-- LOGOUT -->
+        <div class="header-right">
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <!-- 🔥 STATS SECTION -->
+      <div class="stats">
+        <!-- TOTAL QUIZ -->
+        <!-- ================= TOTAL QUIZ CARD ================= -->
+
+        <div class="total-quiz-card">
+          <!-- LEFT ICON -->
+          <div class="quiz-icon">📋</div>
+
+          <!-- CENTER CONTENT -->
+          <div class="quiz-content">
+            <h2><span>TOTAL</span> QUIZ<br />ATTEMPT</h2>
+
+            <div class="quiz-line"></div>
+
+            <p>Quizzes you've attempted so far</p>
+          </div>
+
+          <!-- RIGHT NUMBER BOX -->
+          <div class="quiz-number-box">
+            <span class="counter" data-target="{{ attempts }}">0</span>
+          </div>
+        </div>
+        <!-- PROGRESS -->
+        <div class="progress-card">
+          <!-- CIRCLE -->
+          <div class="custom-progress" style="--progress: {{ progress }};">
+            <div class="progress-inner">
+              <span class="counter-percent" data-target="{{ progress }}">
+                0%
+              </span>
+              <h2 class="progress-text">PERFORMANCE</h2>
+            </div>
+          </div>
+        </div>
+        <!-- ================= TOTAL SCORE ================= -->
+
+        <div class="mini-stat-card">
+          <!-- ICON -->
+          <div class="mini-icon">🏆</div>
+
+          <!-- TEXT -->
+          <div class="mini-content">
+            <h3>TOTAL SCORE</h3>
+
+            <div class="mini-line"></div>
+
+            <p>Your overall quiz points</p>
+          </div>
+
+          <!-- NUMBER BOX -->
+          <div class="mini-number-box">
+            <span class="counter" data-target="{{ total_score }}">0</span>
+          </div>
+        </div>
+        <!-- ================= RANK CIRCLE ================= -->
+
+        <div class="rank-card">
+          <!-- CIRCLE -->
+          <div class="rank-progress">
+            <div class="rank-inner">
+              {% if rank != "-" %}
+              <span class="rank-number counter-rank" data-target="{{ rank }}">
+                #0
+              </span>
+              {% else %}
+              <span class="rank-number">-</span>
+              {% endif %}
+
+              <h2 class="rank-text">RANK</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SUBJECT SECTION ================= -->
+
+      <div class="subjects">
+        <!-- TITLE -->
+        <div class="subject-heading">
+          <div class="heading-line"></div>
+
+          <div>
+            <h2>Select <span>Subject</span> 🎓</h2>
+
+            <p>Choose a subject to start your quiz and test your knowledge</p>
+          </div>
+        </div>
+
+        <!-- SUBJECT GRID -->
+        <div class="subject-grid">
+          <!-- JAVA -->
+          <div class="subject-card" onclick="openSubject('Java')">
+            <div class="subject-left">
+              <div class="subject-icon">☕</div>
+
+              <h3>Java</h3>
+            </div>
+
+            <div class="subject-arrow">➜</div>
+          </div>
+
+          <!-- OOSE -->
+          <div class="subject-card" onclick="openSubject('OOSE')">
+            <div class="subject-left">
+              <div class="subject-icon">📚</div>
+
+              <h3>OOSE</h3>
+            </div>
+
+            <div class="subject-arrow">➜</div>
+          </div>
+
+          <!-- DFS -->
+          <div class="subject-card" onclick="openSubject('Data Structure')">
+            <div class="subject-left">
+              <div class="subject-icon">📂</div>
+
+              <h3>Data and File Structure</h3>
+            </div>
+
+            <div class="subject-arrow">➜</div>
+          </div>
+
+          <!-- INFO SECURITY -->
+          <div
+            class="subject-card"
+            onclick="openSubject('Information Security')"
+          >
+            <div class="subject-left">
+              <div class="subject-icon">🔐</div>
+
+              <h3>Information Security</h3>
+            </div>
+
+            <div class="subject-arrow">➜</div>
+          </div>
+
+          <!-- DIGITAL MARKETING -->
+          <div class="subject-card" onclick="openSubject('Digital Marketing')">
+            <div class="subject-left">
+              <div class="subject-icon">📢</div>
+
+              <h3>Digital Marketing</h3>
+            </div>
+
+            <div class="subject-arrow">➜</div>
+          </div>
+
+          <!-- FULL STACK -->
+          <div class="subject-card" onclick="openSubject('Full Stack')">
+            <div class="subject-left">
+              <div class="subject-icon">&lt;/&gt;</div>
+
+              <h3>Full Stack</h3>
+            </div>
+
+            <div class="subject-arrow">➜</div>
+          </div>
+
+          <!-- PYTHON -->
+          <div class="subject-card" onclick="openSubject('Python')">
+            <div class="subject-left">
+              <div class="subject-icon">🐍</div>
+
+              <h3>Python</h3>
+            </div>
+
+            <div class="subject-arrow">➜</div>
+          </div>
+        </div>
+      </div>
+      <!-- ================= LEADERBOARD ================= -->
+
+      <div class="leaderboard-new">
+        <!-- TITLE -->
+        <div class="leaderboard-title">
+          <span class="laurel">🏆</span>
+
+          <h2>LEADERBOARD</h2>
+
+          <span class="laurel">🏆</span>
+        </div>
+
+        <!-- GLOW LINE -->
+        <div class="leader-line"></div>
+
+        <!-- USERS -->
+        {% for user in leaderboard %}
+
+        <div
+          class="leader-card {% if user.rank == 1 %} first {% elif user.rank == 2 %} second {% elif user.rank == 3 %} third {% else %} fourth {% endif %}"
+        >
+          <!-- LEFT BADGE -->
+          <div class="rank-badge">
+            {% if user.rank == 1 %} <span class="gold-icon">🏆</span> {% elif
+            user.rank == 2 %} <span class="silver-icon">🏆</span> {% elif
+            user.rank == 3 %} <span class="bronze-icon">🏆</span> {% else %} {{
+            user.rank }} {% endif %}
+          </div>
+
+          <!-- PROFILE -->
+          <div class="profile-img">
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <!-- INFO -->
+          <div class="info">
+            <h4>{{ user.username }}</h4>
+
+            <p>
+              Score:
+              <span>{{ user.score }}</span>
+            </p>
+          </div>
+
+          <!-- RANK -->
+          <div class="leader-rank-number">Rank {{ user.rank }}</div>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Quiz System | Improve your knowledge daily 🚀</p>
+      <p>Subjects | Practice | Leaderboard | Contact</p>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script>
+      function logout() {
+        window.location.href = "/logout";
+      }
+    </script>
+  </body>
+</html>
+>>>>>>> 3a39c4d1873c2773db9f7b2e8130d39d9a113d91

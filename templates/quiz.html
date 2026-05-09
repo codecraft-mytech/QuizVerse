@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -57,3 +58,64 @@
     <script src="{{ url_for('static', filename='quiz.js') }}"></script>
   </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body class="quiz-page">
+    <!-- BACK BUTTON -->
+    <button class="quiz-back-btn" onclick="goBack()">BACK</button>
+
+    <!-- TIMER -->
+    <div class="timer" id="timer">30</div>
+
+    <!-- TOP STATS -->
+    <div class="top-stats">
+      <span>Answered: <b id="answered">0</b></span>
+      <span>Not Answered: <b id="notAnswered">0</b></span>
+      <span>Remaining: <b id="remaining">10</b></span>
+      <span>Total: <b id="total">10</b></span>
+    </div>
+
+    <!-- QUIZ CARD -->
+    <div class="quiz-card">
+      <h2>QUIZ TIME 🚀</h2>
+
+      <div class="question-box">
+        <p id="question">Loading question...</p>
+      </div>
+
+      <div class="options">
+        <button class="option">a</button>
+        <button class="option">b</button>
+        <button class="option">c</button>
+        <button class="option">d</button>
+      </div>
+
+      <div class="nav">
+        <button onclick="prevQuestion()">⬅ Prev</button>
+        <button onclick="nextQuestion()">Next ➡</button>
+      </div>
+    </div>
+
+    <script>
+      const subjectFromFlask = "{{ subject }}";
+      function goBack() {
+        if (confirm("Are you sure? Quiz progress will be lost!")) {
+          window.location.href = "/dashboard";
+        }
+      }
+    </script>
+    <script src="{{ url_for('static', filename='questions.js') }}"></script>
+    <script src="{{ url_for('static', filename='quiz.js') }}"></script>
+  </body>
+</html>
+>>>>>>> 3a39c4d1873c2773db9f7b2e8130d39d9a113d91

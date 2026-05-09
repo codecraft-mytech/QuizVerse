@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -63,3 +64,70 @@
     </div>
   </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Login</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- LEFT SIDE -->
+      <div class="left">
+        <div class="overlay"></div>
+
+        <div class="left-content">
+          <h1>Welcome Back</h1>
+          <p>
+            Test your knowledge, challenge yourself, and become a quiz master 🚀
+          </p>
+
+          <div class="social">
+            <span>🌐</span>
+            <span>📘</span>
+            <span>📸</span>
+            <span>▶</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="right">
+        <div class="login-box">
+          <h2>Login</h2>
+          <p class="subtitle">Sign in to continue</p>
+
+          <!-- 🔥 FORM START -->
+          <form method="POST">
+            <input type="text" name="username" placeholder="User ID" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+
+            <div class="Forgot-option">
+              <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit">Sign in</button>
+          </form>
+          <!-- 🔥 FORM END -->
+
+          <p class="register">
+            Not registered?
+            <a href="{{ url_for('register') }}">Register</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+>>>>>>> 3a39c4d1873c2773db9f7b2e8130d39d9a113d91

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
   <head>
@@ -170,3 +171,177 @@
     </script>
   </body>
 </html>
+=======
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PYTHON</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='leaderboard.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <div class="subject-page">
+      <!-- BACK BUTTON -->
+      <button class="back-btn-fixed" onclick="goBack()">BACK</button>
+
+      <!-- SUBJECT LAYOUT -->
+      <div class="subject-container">
+        <!-- ===================================
+             LEFT SECTION
+        ==================================== -->
+
+        <div class="left-section">
+          <!-- HEADER -->
+          <div class="subject-header">
+            <h1>Welcome to <span>{{ subject }}</span> Quiz 🚀</h1>
+
+            <p>"Code. Compile. Conquer."</p>
+          </div>
+
+          <!-- DASHBOARD PANEL -->
+          <div class="subject-stats">
+            <!-- ATTEMPTS -->
+            <div class="dashboard-card attempts-card">
+              <div class="dashboard-left-line"></div>
+
+              <div class="dashboard-icon">📝</div>
+
+              <div class="dashboard-content">
+                <h3>TOTAL ATTEMPTS</h3>
+
+                <div class="dashboard-value">{{ attempts }}</div>
+              </div>
+
+              <div class="dashboard-bg dashboard-bg-1"></div>
+            </div>
+
+            <!-- PROGRESS -->
+            <div class="dashboard-card progress-card-new">
+              <div class="dashboard-left-line"></div>
+
+              <div class="dashboard-icon">🎯</div>
+
+              <div class="dashboard-content">
+                <h3>YOUR PROGRESS</h3>
+
+                <!-- BAR -->
+                <div class="progress-track">
+                  <div
+                    class="progress-fill-new"
+                    style="width: {{ progress }}%;"
+                  ></div>
+                </div>
+
+                <div class="progress-bottom">
+                  <span>{{ progress }}%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- RANK -->
+            <div class="dashboard-card rank-card">
+              <div class="dashboard-left-line purple"></div>
+
+              <div class="dashboard-icon">👑</div>
+
+              <div class="dashboard-content">
+                <h3>YOUR RANK</h3>
+
+                <div class="rank-value">
+                  {% if rank != "-" %} #{{ rank }} {% else %} - {% endif %}
+                </div>
+
+                <p>Keep playing to rank higher!</p>
+              </div>
+
+              <div class="dashboard-bg dashboard-bg-2"></div>
+            </div>
+          </div>
+
+          <!-- START BUTTON -->
+          <div class="start-section">
+            <button class="start-btn" onclick="startQuiz()">
+              Start Quiz ▶
+            </button>
+          </div>
+        </div>
+
+        <!-- ===================================
+             RIGHT SECTION
+        ==================================== -->
+
+        <div class="right-section">
+          <div class="leaderboard-new small-leaderboard">
+            <h2>🏆 Leaderboard</h2>
+
+            {% for user in leaderboard %}
+            <div
+              class="leader-card {% if loop.index == 1 %}first {% elif loop.index == 2 %}second {% elif loop.index == 3 %}third {% endif %}"
+            >
+              <!-- PROFILE -->
+              <div class="profile-img">
+                <i class="fa-solid fa-user"></i>
+              </div>
+
+              <!-- USER INFO -->
+              <div class="info">
+                <h4>{{ user.username }}</h4>
+
+                <p>
+                  {% if loop.index == 1 %} Top Performer {% elif loop.index == 2
+                  %} Quiz Expert {% else %} Keep Going 🚀 {% endif %}
+                </p>
+              </div>
+
+              <!-- RANK -->
+              <span class="leader-rank-number"> RANK {{ user.rank }} </span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Quiz System | Improve your knowledge daily 🚀</p>
+
+      <p>Subjects | Practice | Leaderboard | Contact</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <script>
+      function startQuiz() {
+        const subject = document.querySelector(
+          ".subject-header span",
+        ).innerText;
+
+        window.location.href = "/quiz/" + subject;
+      }
+
+      function goBack() {
+        window.location.href = "/dashboard";
+      }
+    </script>
+  </body>
+</html>
+>>>>>>> 3a39c4d1873c2773db9f7b2e8130d39d9a113d91
