@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Java</title>
+
+    <!-- ✅ CSS FIX -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='leaderboard.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="subject-page">
+      <!-- 🔙 BACK BUTTON -->
+      <button class="back-btn-fixed" onclick="goBack()">BACK</button>
+
+      <!-- 🎯 HEADER -->
+      <div class="subject-header">
+        <h1>Welcome to <span>{{ subject }}</span> Quiz 🚀</h1>
+        <p>"Practice makes perfect. Keep learning!"</p>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="subject-container">
+        <!-- LEFT SIDE -->
+        <div class="left-section">
+          <div class="card">
+            <h3>Attempts</h3>
+            <p>{{ attempts }}</p>
+          </div>
+
+          <div class="card">
+            <h3>Progress</h3>
+            <div class="progress-bar">
+              <div class="progress" style="width: {{ progress }}%"></div>
+            </div>
+            <p>{{ progress }}%</p>
+          </div>
+
+          <div class="card">
+            <h3>Your Rank</h3>
+            <p>{% if rank != "-" %}#{{ rank }}{% else %}-{% endif %}</p>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="right-section">
+          <div class="leaderboard-new small-leaderboard">
+            <h2>Leaderboard</h2>
+
+            {% for user in leaderboard %}
+            <div
+              class="leader-card {% if loop.index == 1 %}first {% elif loop.index == 2 %}second {% elif loop.index == 3 %}third {% endif %}"
+            >
+              <div class="profile-img"></div>
+
+              <div class="info">
+                <h4>{{ user.username }}</h4>
+                <p>
+                  {% if loop.index == 1 %} Top Performer {% elif loop.index == 2
+                  %} Quiz Expert {% else %} Keep Going 🚀 {% endif %}
+                </p>
+              </div>
+
+              <span>{{ "%02d"|format(user.rank) }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- 🚀 START QUIZ -->
+      <div class="start-section">
+        <button class="start-btn" onclick="startQuiz()">Start Quiz ▶</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Quiz System | Improve your knowledge daily 🚀</p>
+      <p>Subjects | Practice | Leaderboard | Contact</p>
+    </footer>
+
+    <!-- ✅ JS FIX -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- 🔥 FUNCTIONS -->
+    <script>
+      function startQuiz() {
+        const subject = document.querySelector(
+          ".subject-header span",
+        ).innerText;
+        window.location.href = "/quiz/" + subject;
+      }
+      function goBack() {
+        window.location.href = "/dashboard";
+      }
+    </script>
+  </body>
+</html>

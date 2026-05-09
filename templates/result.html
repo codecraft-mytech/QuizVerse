@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz Result</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body class="result-page">
+    <div class="result-container">
+      <!-- CONFETTI -->
+      <div class="confetti">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- HEADING -->
+      <h1>Quiz Result 🎯</h1>
+
+      <!-- SUBTITLE -->
+      <p class="result-subtitle">Great job! Here's how you performed.</p>
+
+      <!-- RESULT CARDS -->
+      <div class="result-cards">
+        <!-- ATTEMPTED -->
+        <div class="card attempted-card">
+          <div class="card-icon blue">📋</div>
+
+          <h3>ATTEMPTED</h3>
+
+          <p id="attempted">0</p>
+
+          <span class="outof">out of 10</span>
+        </div>
+
+        <!-- REMAINING -->
+        <div class="card remaining-card">
+          <div class="card-icon purple">🕒</div>
+
+          <h3>REMAINING</h3>
+
+          <p id="remaining">0</p>
+
+          <span class="outof">out of 10</span>
+        </div>
+
+        <!-- CORRECT -->
+        <div class="card correct-card">
+          <div class="card-icon green">✅</div>
+
+          <h3>CORRECT</h3>
+
+          <p id="correct">0</p>
+
+          <span class="outof">out of 10</span>
+        </div>
+
+        <!-- INCORRECT -->
+        <div class="card incorrect-card">
+          <div class="card-icon red">❌</div>
+
+          <h3>INCORRECT</h3>
+
+          <p id="incorrect">0</p>
+
+          <span class="outof">out of 10</span>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE SECTION -->
+      <div class="progress-section">
+        <!-- LEFT TROPHY -->
+        <div class="trophy-side">
+          <div class="trophy-img">🏆</div>
+        </div>
+
+        <!-- RIGHT CONTENT -->
+        <div class="performance-content">
+          <h2>
+            <span>Good effort!</span>
+            You're on the right track.
+          </h2>
+
+          <p>Keep practicing and improve your score!</p>
+
+          <!-- PROGRESS -->
+          <div class="progress-bar">
+            <div class="progress" id="progress-bar"></div>
+          </div>
+
+          <!-- QUOTE -->
+          <div class="quote-box">📈 You can do better next time!</div>
+        </div>
+      </div>
+
+      <!-- BUTTON -->
+      <div class="result-btn">
+        <button onclick="goDashboard()">🏠 Go to Dashboard</button>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='result.js') }}"></script>
+  </body>
+</html>
