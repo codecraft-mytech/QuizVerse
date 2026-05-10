@@ -5,9 +5,11 @@ app = Flask(__name__)
 app.secret_key = "secret123"
 
 # ================== DATABASE ==================
-client_db = MongoClient("mongodb://localhost:27017/")
-db = client_db["quiz_app"]
+import os
+from pymongo import MongoClient
 
+client_db = MongoClient(os.getenv("MONGO_URI"))
+db = client_db["quiz_app"]
 users = db["users"]
 results = db["results"]
 
