@@ -8,11 +8,23 @@ app.secret_key = "secret123"
 import os
 from pymongo import MongoClient
 
-client_db = MongoClient(os.getenv("MONGO_URI"))
+mongo_uri = os.getenv("MONGO_URI")
+
+client_db = MongoClient(
+    mongo_uri,
+    serverSelectionTimeoutMS=5000
+)
+
 db = client_db["quiz_app"]
+
 users = db["users"]
 results = db["results"]
 
+try:
+    client_db.admin.command("ping")
+    print("MongoDB Connected Successfully")
+except Exception as e:
+    print("MongoDB Connection Error:", e)
 # ================== SUBJECT LIST ==================
 SUBJECTS = [
     "Java",
